@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="book-version" content="" />
+    <meta name="book-release" content="1" />
+    <meta name="docsearch:name" content="Intershop REST API Documentation" />
+    <meta name="docsearch:version" content="1" />
+    <meta name="docsearch:package_type" content="" />
+
+    
+        <title>Intershop Commerce Management CMS API &mdash; Intershop REST API Documentation 1 documentation</title>
+    
+    
+
+    <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/webfonts.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/fontawesome.css" />
+            <link rel="index" title="Index" href="genindex.html" />
+            <link rel="search" title="Search" href="search.html" />
+        <link rel="top" title="Intershop REST API Documentation 1 documentation" href="#" />
+            <link rel="next" title="Testdatei" href="text.html" />
+            <link rel="prev" title="Intershop Order Management Cache Management API" href="cache.html" />
+
+    <script src="_static/js/modernizr.min.js"></script>
+
+    
+
+</head>
+
+<body>
+
+    <div class="page">
+        
+        <div class="page-header">
+            <div class="page-header-inner">
+                <a href="https://docs.typo3.org" title="TYPO3 Documentation" class="logo">
+                    <img src="_static/img/typo3-logo.svg" width="484" height="130" alt="TYPO3 Logo" class="logo-image" />
+                </a>
+            </div>
+        </div>
+
+        
+
+        <div class="page-main">
+            <div class="page-main-inner">
+                <div class="page-main-navigation">
+                    <nav>
+                        <input type="checkbox" id="toggleToc" class="toc-checkbox">
+                        <div class="toc-header"><div class="toc-title">
+                                    <a class="toc-title-project" href="index.html">Intershop REST API Documentation</a></div><div class="toc-actions">
+                                <label for="toggleToc" class="toc-toggle">
+                                    Menu
+                                </label>
+                            </div>
+                        </div>
+                        <div class="toc-collapse">
+<div class="toc-search" role="search">
+    <form id="search-form" action="search.html" autocomplete="off" method="get">
+        <input class="form-control" type="text" name="q" placeholder="Search this project" aria-label="Search this project" id="searchinput" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div><div class="toc" role="navigation" aria-label="main navigation">
+                                
+                                    
+                                    
+                                        <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="auth.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rma.html">Intershop Order Management RMA API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="orderstate.html">Intershop Order Management Order State API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cache.html">Intershop Order Management Cache Management API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Intershop Commerce Management CMS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text.html">Testdatei</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text2.html">Testdatei</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text2.html#uberschrift">Überschrift</a></li>
+</ul>
+
+                                    
+                                
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="page-main-content">
+                    <div class="rst-content">
+                        
+    
+        <a class="no-focus" accesskey="p" href="cache.html" tabindex="-1"></a>
+    
+    
+        <a class="no-focus" accesskey="n" href="text.html" tabindex="-1"></a>
+    
+                        <div class="breadcrumb-bar" role="navigation" aria-label="breadcrumbs navigation">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Start</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Intershop Commerce Management CMS API</li>
+    </ol>
+        <div class="breadcrumb-additions">
+                <a class="btn btn-sm btn-light" href="_sources/cms.rst.txt" rel="nofollow">
+                    <span class="btn-icon"><span class="fas fa-code"></span></span>
+                    <span class="btn-text">View source</span>
+                </a>
+        </div>
+</div>
+                        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                            <div itemprop="articleBody">
+                                
+    <div class="section" id="intershop-commerce-management-cms-api">
+<h1>Intershop Commerce Management CMS API<a class="headerlink" href="#intershop-commerce-management-cms-api" title="Permalink to this headline">¶</a></h1>
+<dl class="get">
+<dt id="get--cms">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/cms</code><a class="headerlink" href="#get--cms" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>(beta) Returns the list of CMS sub resources</strong></p>
+<p>This operation returns a list of CMS sub resources. This includes view contexts, includes, pagelets, pages and pagetree.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Status Codes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--cms-viewcontexts">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/cms/viewcontexts</code><a class="headerlink" href="#get--cms-viewcontexts" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>(beta) Returns all view contexts of the domain</strong></p>
+<p>This operation returns all view contexts of the domain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Query Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> (<em>integer</em>) – The pageable offset</p></li>
+<li><p><strong>amount</strong> (<em>integer</em>) – The pageable amount</p></li>
+<li><p><strong>pageable</strong> (<em>string</em>) – The ID of the respective pageable</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Bad Request</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--cms-viewcontexts-viewContextID-entrypoint">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/cms/viewcontexts/{viewContextID}/entrypoint</code><a class="headerlink" href="#get--cms-viewcontexts-viewContextID-entrypoint" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>(beta) Resolves a page for a view context</strong></p>
+<p>This operation resolves a page for a view context. Depending on the type of view context query-parameters have to be specified.
+To resolve this call, you need all required call parameters.</p>
+<p>Example: How to get a view context for the Catalog <cite>Cameras-Camcorder</cite> and
+the Category <cite>Cameras-Camcorders&#64;inSPIRED-inTRONICS-Cameras-Camcorders</cite></p>
+<p>Step 1: Find out which parameters are required to resolve the view context:
+<a href="#id1"><span class="problematic" id="id2">``</span></a>`
+curl /cms/viewcontexts/viewcontext.page.category.pagelet2-ViewContext
+—</p>
+<blockquote>
+<div><dl>
+<dt>Response:</dt><dd><dl>
+<dt>{</dt><dd><p>…
+callParameter: [</p>
+<blockquote>
+<div><p>{ name: “CatalogBO”, optional: false },
+{ name: “CategoryBO”, optional: false },
+…</p>
+</div></blockquote>
+<p>]</p>
+</dd>
+</dl>
+<p>}</p>
+</dd>
+</dl>
+</div></blockquote>
+<p><a href="#id3"><span class="problematic" id="id4">``</span></a><a href="#id5"><span class="problematic" id="id6">`</span></a></p>
+<p>Step 2: Call this resource with at least the required parameters to receive the pagelet entry point for this view context.
+<a href="#id7"><span class="problematic" id="id8">``</span></a>`
+curl <a class="reference external" href="mailto:/cms/viewcontexts/viewcontext&#46;page&#46;category&#46;pagelet2-ViewContext/entrypoint?CatalogBO=Cameras-Camcorders&amp;CategoryBO=Cameras-Camcorders&#37;&#52;&#48;inSPIRED-inTRONICS-Cameras-Camcorders">/cms/viewcontexts/viewcontext<span>&#46;</span>page<span>&#46;</span>category<span>&#46;</span>pagelet2-ViewContext/entrypoint?CatalogBO=Cameras-Camcorders&amp;CategoryBO=Cameras-Camcorders<span>&#64;</span>inSPIRED-inTRONICS-Cameras-Camcorders</a>
+—</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Response:</dt><dd><p>see PageletEntryPointRO</p>
+</dd>
+</dl>
+</div></blockquote>
+<p><a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>viewContextID</strong> (<em>string</em>) – The view context Id. Can be qualified with the resource-set Id.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Query Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>depth</strong> (<em>integer</em>) – The depth of how far the slot/pagelet relations should be resolved. Further on from this depth links are used instead of resource objects.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Status Codes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – Not Found</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Bad Request</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--cms-viewcontexts-viewContextID">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/cms/viewcontexts/{viewContextID}</code><a class="headerlink" href="#get--cms-viewcontexts-viewContextID" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>(beta) Returns a specific view context of the domain</strong></p>
+<p>This operation returns a specific view context of the domain. By calling a specific view context, you get a field called <cite>callParameters</cite> in the response.
+This is a list of objects that contains name, description and information on whether this specific parameter is optional or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>viewContextID</strong> (<em>string</em>) – The view context Id. Can be qualified with the resource-set Id.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – Not Found</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Bad Request</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--cms-includes">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/cms/includes</code><a class="headerlink" href="#get--cms-includes" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>(beta) Returns a list of all includes</strong></p>
+<p>This operation returns a list of all includes. Includes are PageletEntryPoint objects with page-flag set to false.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Query Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> (<em>integer</em>) – The pageable offset</p></li>
+<li><p><strong>amount</strong> (<em>integer</em>) – The pageable amount</p></li>
+<li><p><strong>pageable</strong> (<em>string</em>) – The ID of the respective pageable</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Bad Request</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--cms-includes-includesKey">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/cms/includes/{includesKey}</code><a class="headerlink" href="#get--cms-includes-includesKey" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>(beta) Returns a specific include</strong></p>
+<p>This operation returns a specific include. The include must be published at the time of the request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>includesKey</strong> (<em>string</em>) – The key or UUID to resolve a single item</p></li>
+</ul>
+</dd>
+<dt class="field-even">Query Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>depth</strong> (<em>integer</em>) – The depth limit of how far a given include composition should be resolved. Further on from this depth links are used instead of resource objects.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Status Codes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Bad Request</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – Not Found</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--cms-pagelets">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/cms/pagelets</code><a class="headerlink" href="#get--cms-pagelets" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>(beta) Returns the list of all published pagelets of the domain</strong></p>
+<p>This operation returns a list of all published pagelets of the domain. Pagelets which are shared to this domain will be shown as well.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Query Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> (<em>integer</em>) – The pageable offset</p></li>
+<li><p><strong>amount</strong> (<em>integer</em>) – The pageable amount</p></li>
+<li><p><strong>pageable</strong> (<em>string</em>) – The ID of the respective pageable</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Bad Request</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--cms-pagelets-pageletsKey">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/cms/pagelets/{pageletsKey}</code><a class="headerlink" href="#get--cms-pagelets-pageletsKey" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>(beta) Returns a specific pagelet of the domain</strong></p>
+<p>This operation returns a specific pagelet of the domain. The pagelet must be published at the time of the request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pageletsKey</strong> (<em>string</em>) – The key or UUID to resolve a single item</p></li>
+</ul>
+</dd>
+<dt class="field-even">Query Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>depth</strong> (<em>integer</em>) – The depth of how far the slot/pagelet relations should be resolved. Further on from this depth links are used instead of resource objects.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Status Codes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – Not Found</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Bad Request</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--cms-pagelets-pageletsKey-slotsKey">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/cms/pagelets/{pageletsKey}/{slotsKey}</code><a class="headerlink" href="#get--cms-pagelets-pageletsKey-slotsKey" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>(beta) Returns a specific slot of a pagelet</strong></p>
+<p>This operation returns a specific slot of a pagelet. The pagelet must be published at the time of the request and the slot must exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pageletsKey</strong> (<em>string</em>) – The key or UUID to resolve a single item</p></li>
+<li><p><strong>slotsKey</strong> (<em>string</em>) – The key or UUID to resolve a single item</p></li>
+</ul>
+</dd>
+<dt class="field-even">Query Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>depth</strong> (<em>integer</em>) – The depth of how far the slot/pagelet relations should be resolved. Further on from this depth links are used instead of resource objects.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Status Codes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – Not Found</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Bad Request</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--cms-pages">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/cms/pages</code><a class="headerlink" href="#get--cms-pages" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>(beta) Returns a list of all pages</strong></p>
+<p>This operation returns a list of all pages. Pages are PageletEntryPoint objects with page-flag set to true.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Query Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> (<em>integer</em>) – The pageable offset</p></li>
+<li><p><strong>amount</strong> (<em>integer</em>) – The pageable amount</p></li>
+<li><p><strong>pageable</strong> (<em>string</em>) – The ID of the respective pageable</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Bad Request</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--cms-pages-pagesKey">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/cms/pages/{pagesKey}</code><a class="headerlink" href="#get--cms-pages-pagesKey" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>(beta) Returns a specific page</strong></p>
+<p>This operation returns a specific page. The page must be published at the time of the request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pagesKey</strong> (<em>string</em>) – The key or UUID to resolve a single item</p></li>
+</ul>
+</dd>
+<dt class="field-even">Query Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>depth</strong> (<em>integer</em>) – The depth limit of how far a given page composition should be resolved. Further on from this depth links are used instead of resource objects.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Status Codes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Bad Request</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – Not Found</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--cms-pagetree">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/cms/pagetree</code><a class="headerlink" href="#get--cms-pagetree" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>(beta) Returns all pages with their tree hierarchy</strong></p>
+<p>This operation returns a list of all pages that are included in the domain.
+Each element can have a hierarchy of optional subpages.
+You can limit the recursion depth by providing a <cite>depth</cite> value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Query Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>depth</strong> (<em>integer</em>) – The limit of how far a given page tree should be resolved. Further on from this depth, links are used instead of resource objects.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Bad Request</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--cms-pagetree-pagesKey">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/cms/pagetree/{pagesKey}</code><a class="headerlink" href="#get--cms-pagetree-pagesKey" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>(beta) Returns a specific page hierarchy</strong></p>
+<p>This operation returns a page found in the domain with the given identifier.
+It can contain a hierarchy of optional subpages.
+You can limit the recursion depth by providing a <cite>depth</cite> value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pagesKey</strong> (<em>string</em>) – The unique identifier of the requested page or a path of page identifier</p></li>
+</ul>
+</dd>
+<dt class="field-even">Query Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>depth</strong> (<em>integer</em>) – The limit of how far a given page tree should be resolved. Further on from this depth, links are used instead of resource objects.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Status Codes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a> – Not Found</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Bad Request</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+                            </div>
+                        </div>
+                        
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            
+                <li class="page-item">
+                    <a class="page-link" href="cache.html" title="Accesskey Alt(+Shift)+p">
+                        Previous
+                    </a>
+                </li>
+            
+            
+                <li class="page-item">
+                    <a class="page-link" href="text.html" title="Accesskey Alt(+Shift)+n">
+                        Next
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div class="page-footer">
+            <footer>
+    <div class="frame frame-ruler-before frame-background-dark">
+        <div class="frame-container">
+            <div class="frame-inner"><div class="footer-additional"><p class="text-center"><a href="https://github.com/TYPO3-Documentation/sphinx_typo3_theme" rel="nofollow" target="_blank">TYPO3 Theme 4.1.3</a></p>
+                </div>
+
+                <div class="footer-meta"><div class="footer-meta-copyright">&copy; Copyright 2020, marcus</div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer>
+        </div>
+
+    </div>
+
+    
+        <script type="text/javascript">
+            var DOCUMENTATION_OPTIONS = {
+                URL_ROOT: './',
+                VERSION: '1',
+                COLLAPSE_INDEX: false,
+                FILE_SUFFIX: '.html',
+                HAS_SOURCE: true
+            };
+        </script>
+        <script type="text/javascript" src="_static/js/jquery.min.js"></script>
+        <script type="text/javascript" src="_static/js/underscore.min.js"></script>
+        <script type="text/javascript" src="_static/js/doctools.min.js"></script>
+        <script type="text/javascript" src="_static/js/popper.min.js"></script>
+        <script type="text/javascript" src="_static/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="_static/js/theme.min.js"></script><script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/js/searchtools.min.js"></script>
+        <script type="text/javascript" src="_static/js/autocomplete.min.js"></script>
+            
+            
+            
+            
+    <script type="text/javascript">
+        jQuery(function() { Search.loadIndex("searchindex.js"); });
+    </script>
+    <script type="text/javascript" id="searchindexloader"></script>  
+
+    </body>
+</html>

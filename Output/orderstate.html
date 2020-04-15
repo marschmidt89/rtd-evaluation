@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="book-version" content="" />
+    <meta name="book-release" content="1" />
+    <meta name="docsearch:name" content="Intershop REST API Documentation" />
+    <meta name="docsearch:version" content="1" />
+    <meta name="docsearch:package_type" content="" />
+
+    
+        <title>Intershop Order Management Order State API &mdash; Intershop REST API Documentation 1 documentation</title>
+    
+    
+
+    <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/webfonts.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/fontawesome.css" />
+            <link rel="index" title="Index" href="genindex.html" />
+            <link rel="search" title="Search" href="search.html" />
+        <link rel="top" title="Intershop REST API Documentation 1 documentation" href="#" />
+            <link rel="next" title="Intershop Order Management Cache Management API" href="cache.html" />
+            <link rel="prev" title="Intershop Order Management RMA API" href="rma.html" />
+
+    <script src="_static/js/modernizr.min.js"></script>
+
+    
+
+</head>
+
+<body>
+
+    <div class="page">
+        
+        <div class="page-header">
+            <div class="page-header-inner">
+                <a href="https://docs.typo3.org" title="TYPO3 Documentation" class="logo">
+                    <img src="_static/img/typo3-logo.svg" width="484" height="130" alt="TYPO3 Logo" class="logo-image" />
+                </a>
+            </div>
+        </div>
+
+        
+
+        <div class="page-main">
+            <div class="page-main-inner">
+                <div class="page-main-navigation">
+                    <nav>
+                        <input type="checkbox" id="toggleToc" class="toc-checkbox">
+                        <div class="toc-header"><div class="toc-title">
+                                    <a class="toc-title-project" href="index.html">Intershop REST API Documentation</a></div><div class="toc-actions">
+                                <label for="toggleToc" class="toc-toggle">
+                                    Menu
+                                </label>
+                            </div>
+                        </div>
+                        <div class="toc-collapse">
+<div class="toc-search" role="search">
+    <form id="search-form" action="search.html" autocomplete="off" method="get">
+        <input class="form-control" type="text" name="q" placeholder="Search this project" aria-label="Search this project" id="searchinput" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div><div class="toc" role="navigation" aria-label="main navigation">
+                                
+                                    
+                                    
+                                        <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="auth.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rma.html">Intershop Order Management RMA API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Intershop Order Management Order State API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cache.html">Intershop Order Management Cache Management API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cms.html">Intershop Commerce Management CMS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text.html">Testdatei</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text2.html">Testdatei</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text2.html#uberschrift">Überschrift</a></li>
+</ul>
+
+                                    
+                                
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="page-main-content">
+                    <div class="rst-content">
+                        
+    
+        <a class="no-focus" accesskey="p" href="rma.html" tabindex="-1"></a>
+    
+    
+        <a class="no-focus" accesskey="n" href="cache.html" tabindex="-1"></a>
+    
+                        <div class="breadcrumb-bar" role="navigation" aria-label="breadcrumbs navigation">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Start</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Intershop Order Management Order State API</li>
+    </ol>
+        <div class="breadcrumb-additions">
+                <a class="btn btn-sm btn-light" href="_sources/orderstate.rst.txt" rel="nofollow">
+                    <span class="btn-icon"><span class="fas fa-code"></span></span>
+                    <span class="btn-text">View source</span>
+                </a>
+        </div>
+</div>
+                        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                            <div itemprop="articleBody">
+                                
+    <div class="section" id="intershop-order-management-order-state-api">
+<h1>Intershop Order Management Order State API<a class="headerlink" href="#intershop-order-management-order-state-api" title="Permalink to this headline">¶</a></h1>
+<dl class="get">
+<dt id="get--states">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/states</code><a class="headerlink" href="#get--states" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Get orders states by search criteria</strong></p>
+<p>Obtain the order states of the orders which are matching the given search criterias</p>
+<dl class="field-list simple">
+<dt class="field-odd">Query Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shopId</strong> (<em>integer</em>) – The id of the IOM shop instance 
+(Required)</p></li>
+<li><p><strong>orderNumber</strong> (<em>array</em>) – Order number as used by the shop</p></li>
+<li><p><strong>customerNumber</strong> (<em>array</em>) – Customer number as used by the shop</p></li>
+<li><p><strong>productNumber</strong> (<em>array</em>) – Product number as used by the shop</p></li>
+<li><p><strong>orderState</strong> (<em>array</em>) – Order state as used by the shop if configured, otherweise the IOM internal names of order states</p></li>
+<li><p><strong>orderCreationDate[gte]</strong> (<em>string</em>) – The earliest ‘shop order creation date’ of an order</p></li>
+<li><p><strong>orderCreationDate[lte]</strong> (<em>string</em>) – The latest ‘shop order creation date’ of an order</p></li>
+<li><p><strong>orderBy</strong> (<em>string</em>) – </p></li>
+<li><p><strong>sortDirection</strong> (<em>string</em>) – </p></li>
+<li><p><strong>offset</strong> (<em>integer</em>) – The starting row (index) of the first element to return</p></li>
+<li><p><strong>limit</strong> (<em>integer</em>) – The number of items to return</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a> – OK</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1">400 Bad Request</a> – Bad Request</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">401 Unauthorized</a> – Authentication information is missing or invalid</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4">403 Forbidden</a> – Forbidden</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7">406 Not Acceptable</a> – Not Acceptable</p></li>
+<li><p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1">500 Internal Server Error</a> – An unexpected error occured</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+                            </div>
+                        </div>
+                        
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            
+                <li class="page-item">
+                    <a class="page-link" href="rma.html" title="Accesskey Alt(+Shift)+p">
+                        Previous
+                    </a>
+                </li>
+            
+            
+                <li class="page-item">
+                    <a class="page-link" href="cache.html" title="Accesskey Alt(+Shift)+n">
+                        Next
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div class="page-footer">
+            <footer>
+    <div class="frame frame-ruler-before frame-background-dark">
+        <div class="frame-container">
+            <div class="frame-inner"><div class="footer-additional"><p class="text-center"><a href="https://github.com/TYPO3-Documentation/sphinx_typo3_theme" rel="nofollow" target="_blank">TYPO3 Theme 4.1.3</a></p>
+                </div>
+
+                <div class="footer-meta"><div class="footer-meta-copyright">&copy; Copyright 2020, marcus</div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer>
+        </div>
+
+    </div>
+
+    
+        <script type="text/javascript">
+            var DOCUMENTATION_OPTIONS = {
+                URL_ROOT: './',
+                VERSION: '1',
+                COLLAPSE_INDEX: false,
+                FILE_SUFFIX: '.html',
+                HAS_SOURCE: true
+            };
+        </script>
+        <script type="text/javascript" src="_static/js/jquery.min.js"></script>
+        <script type="text/javascript" src="_static/js/underscore.min.js"></script>
+        <script type="text/javascript" src="_static/js/doctools.min.js"></script>
+        <script type="text/javascript" src="_static/js/popper.min.js"></script>
+        <script type="text/javascript" src="_static/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="_static/js/theme.min.js"></script><script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/js/searchtools.min.js"></script>
+        <script type="text/javascript" src="_static/js/autocomplete.min.js"></script>
+            
+            
+            
+            
+    <script type="text/javascript">
+        jQuery(function() { Search.loadIndex("searchindex.js"); });
+    </script>
+    <script type="text/javascript" id="searchindexloader"></script>  
+
+    </body>
+</html>

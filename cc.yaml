@@ -1,0 +1,1555 @@
+openapi: 3.0.1
+info:
+  title: Intershop Contact Center
+  contact:
+    name: Intershop Communications AG
+    url: http://intershop.com
+  version: 7.10.15.2
+servers:
+- url: /INTERSHOP/rest/WFS/rest-api
+security:
+- UserSecurity: []
+paths:
+  /customers:
+    get:
+      tags:
+      - Customer
+      summary: Returns customers based on the given search parameters.
+      description: The response resource collection contains objects of the type LinkRO.
+      operationId: findCustomers
+      parameters:
+      - name: SingleSearchField
+        in: query
+        description: Single.
+        schema:
+          type: string
+      - name: CustomerNo
+        in: query
+        description: The unique customer number
+        schema:
+          type: string
+      - name: FirstName
+        in: query
+        description: The customer's first name
+        schema:
+          type: string
+      - name: LastName
+        in: query
+        description: The customer's last name
+        schema:
+          type: string
+      - name: Birthday
+        in: query
+        description: The customer's birthday
+        schema:
+          type: string
+      - name: EMail
+        in: query
+        description: The customer's e-mail address
+        schema:
+          type: string
+      - name: PhoneNo
+        in: query
+        description: The customer's phone number
+        schema:
+          type: string
+      - name: PostCode
+        in: query
+        description: The customer's postal code
+        schema:
+          type: string
+      - name: City
+        in: query
+        description: The customer's city
+        schema:
+          type: string
+      - name: Country
+        in: query
+        description: The customer's country
+        schema:
+          type: string
+      - name: Channel
+        in: query
+        description: The channel the customer belongs to
+        schema:
+          type: string
+      - name: authentication-token
+        in: header
+        description: A token to authenticate the request
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserLogin
+        in: header
+        description: User name
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserPassword
+        in: header
+        description: User password
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserOrganization
+        in: header
+        description: User organization
+        allowEmptyValue: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollectionRO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResourceCollectionRO'
+        400:
+          description: Bad request
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+  /customers/{CustomerResourceKey}:
+    get:
+      tags:
+      - Customer
+      summary: Returns the details of a customer.
+      description: The response contains an object of the type CustomerRO.
+      operationId: getCustomerData
+      parameters:
+      - name: authentication-token
+        in: header
+        description: A token to authenticate the request
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserLogin
+        in: header
+        description: User name
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserPassword
+        in: header
+        description: User password
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserOrganization
+        in: header
+        description: User organization
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: CustomerResourceKey
+        in: path
+        description: The key or UUID to resolve a single item
+        required: true
+        schema:
+          type: string
+        example: ExampleKey
+      responses:
+        200:
+          description: OK
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerRO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/CustomerRO'
+        400:
+          description: Bad request
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+        404:
+          description: Not found
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+  /customers/{CustomerResourceKey}/mails:
+    post:
+      tags:
+      - Promotion
+      summary: Sends a promotion code to a customer.
+      description: The response contains no content.
+      operationId: addPromotionCodeMail
+      parameters:
+      - name: authentication-token
+        in: header
+        description: A token to authenticate the request
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserLogin
+        in: header
+        description: User name
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserPassword
+        in: header
+        description: User password
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserOrganization
+        in: header
+        description: User organization
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: CustomerResourceKey
+        in: path
+        description: The key or UUID to resolve a single item
+        required: true
+        schema:
+          type: string
+        example: ExampleKey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromotionCodeRO'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/PromotionCodeRO'
+      responses:
+        204:
+          description: No content
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+        500:
+          description: Internal Server Error
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+  /customers/{CustomerResourceKey}/tokens:
+    post:
+      tags:
+      - Customer
+      summary: Creates a new customer authentication token to act on behalf this customer.
+      description: The response contains an object of the type TokenRO.
+      operationId: createToken
+      parameters:
+      - name: authentication-token
+        in: header
+        description: A token to authenticate the request
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserLogin
+        in: header
+        description: User name
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserPassword
+        in: header
+        description: User password
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserOrganization
+        in: header
+        description: User organization
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: CustomerResourceKey
+        in: path
+        description: The key or UUID to resolve a single item
+        required: true
+        schema:
+          type: string
+        example: ExampleKey
+      responses:
+        201:
+          description: Created
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TokenRO'
+  /customers/{CustomerResourceKey}/addresses:
+    get:
+      tags:
+      - Customer
+      summary: Returns a list of addresses of the customer.
+      description: The response resource collection contains objects of the type LinkRO.
+      operationId: getAddresses
+      parameters:
+      - name: authentication-token
+        in: header
+        description: A token to authenticate the request
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserLogin
+        in: header
+        description: User name
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserPassword
+        in: header
+        description: User password
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserOrganization
+        in: header
+        description: User organization
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: CustomerResourceKey
+        in: path
+        description: The key or UUID to resolve a single item
+        required: true
+        schema:
+          type: string
+        example: ExampleKey
+      responses:
+        200:
+          description: OK
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollectionRO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResourceCollectionRO'
+  /customers/{CustomerResourceKey}/addresses/{CustomerAddressResourceKey}:
+    get:
+      tags:
+      - Customer
+      summary: Returns details of a customer address.
+      description: The response contains an object of the type AddressRO.
+      operationId: getAddress
+      parameters:
+      - name: authentication-token
+        in: header
+        description: A token to authenticate the request
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserLogin
+        in: header
+        description: User name
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserPassword
+        in: header
+        description: User password
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserOrganization
+        in: header
+        description: User organization
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: CustomerResourceKey
+        in: path
+        description: The key or UUID to resolve a single item
+        required: true
+        schema:
+          type: string
+        example: ExampleKey
+      - name: CustomerAddressResourceKey
+        in: path
+        description: The key or UUID to resolve a single item
+        required: true
+        schema:
+          type: string
+        example: ExampleKey
+      responses:
+        200:
+          description: OK
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressRO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/AddressRO'
+        404:
+          description: Not found
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+  /channels:
+    get:
+      tags:
+      - Channel
+      summary: Returns a list of channels of the organization.
+      description: The response resource collection contains objects of the type LinkRO.
+      operationId: getChannels
+      parameters:
+      - name: authentication-token
+        in: header
+        description: A token to authenticate the request
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserLogin
+        in: header
+        description: User name
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserPassword
+        in: header
+        description: User password
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserOrganization
+        in: header
+        description: User organization
+        allowEmptyValue: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollectionRO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResourceCollectionRO'
+        400:
+          description: Bad request
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+  /channels/{ChannelResourceKey}:
+    get:
+      tags:
+      - Channel
+      summary: Returns details of a channel.
+      description: The response contains an object of the type ChannelRO.
+      operationId: getChannel
+      parameters:
+      - name: authentication-token
+        in: header
+        description: A token to authenticate the request
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserLogin
+        in: header
+        description: User name
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserPassword
+        in: header
+        description: User password
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserOrganization
+        in: header
+        description: User organization
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: ChannelResourceKey
+        in: path
+        description: The key or UUID to resolve a single item
+        required: true
+        schema:
+          type: string
+        example: ExampleKey
+      responses:
+        200:
+          description: OK
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChannelRO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ChannelRO'
+        400:
+          description: Bad request
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+  /channels/{ChannelResourceKey}/promotions:
+    get:
+      tags:
+      - Promotion
+      summary: Returns a list of available Contact Center promotions.
+      description: Available Contact Center promotions are enabled promotions with id prefix 'CC_' and that are valid within the requested time frame.<br/>The response resource collection contains objects of the type LinkRO.
+      operationId: getPromotions
+      parameters:
+      - name: authentication-token
+        in: header
+        description: A token to authenticate the request
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserLogin
+        in: header
+        description: User name
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserPassword
+        in: header
+        description: User password
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserOrganization
+        in: header
+        description: User organization
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: ChannelResourceKey
+        in: path
+        description: The key or UUID to resolve a single item
+        required: true
+        schema:
+          type: string
+        example: ExampleKey
+      responses:
+        200:
+          description: OK
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollectionRO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResourceCollectionRO'
+  /channels/{ChannelResourceKey}/promotions/{PromotionResourceKey}:
+    get:
+      tags:
+      - Promotion
+      summary: Returns details of a promotion.
+      description: The response contains an object of the type PromotionRO.
+      operationId: getPromotion
+      parameters:
+      - name: authentication-token
+        in: header
+        description: A token to authenticate the request
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserLogin
+        in: header
+        description: User name
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserPassword
+        in: header
+        description: User password
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserOrganization
+        in: header
+        description: User organization
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: ChannelResourceKey
+        in: path
+        description: The key or UUID to resolve a single item
+        required: true
+        schema:
+          type: string
+        example: ExampleKey
+      - name: PromotionResourceKey
+        in: path
+        description: The key or UUID to resolve a single item
+        required: true
+        schema:
+          type: string
+        example: ExampleKey
+      responses:
+        200:
+          description: OK
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromotionRO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/PromotionRO'
+        404:
+          description: Not found
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+  /channels/{ChannelResourceKey}/promotions/{PromotionResourceKey}/codes:
+    post:
+      tags:
+      - Promotion
+      summary: Creates a promotion code for the promotion.
+      description: The response resource collection contains objects of the type PromotionCodeRO.
+      operationId: createPromotionCode
+      parameters:
+      - name: authentication-token
+        in: header
+        description: A token to authenticate the request
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserLogin
+        in: header
+        description: User name
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserPassword
+        in: header
+        description: User password
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserOrganization
+        in: header
+        description: User organization
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: ChannelResourceKey
+        in: path
+        description: The key or UUID to resolve a single item
+        required: true
+        schema:
+          type: string
+        example: ExampleKey
+      - name: PromotionResourceKey
+        in: path
+        description: The key or UUID to resolve a single item
+        required: true
+        schema:
+          type: string
+        example: ExampleKey
+      responses:
+        200:
+          description: OK
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromotionCodeRO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/PromotionCodeRO'
+        400:
+          description: Bad request
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+  /channels/{ChannelResourceKey}/token:
+    get:
+      tags:
+      - Co-Browse
+      summary: Returns a new co-browse authentication token for a given representative to access a given customer within the given domain.
+      description: The response contains an object of the type TokenRO.
+      operationId: getAuthenticationToken
+      parameters:
+      - name: customerLogin
+        in: query
+        description: Login of the customer.
+        schema:
+          type: string
+      - name: representativeLogin
+        in: query
+        description: Login of the representative.
+        schema:
+          type: string
+      - name: representativeDomain
+        in: query
+        description: Domain of the representative login.
+        schema:
+          type: string
+      - name: authentication-token
+        in: header
+        description: A token to authenticate the request
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserLogin
+        in: header
+        description: User name
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserPassword
+        in: header
+        description: User password
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserOrganization
+        in: header
+        description: User organization
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: ChannelResourceKey
+        in: path
+        description: The key or UUID to resolve a single item
+        required: true
+        schema:
+          type: string
+        example: ExampleKey
+      responses:
+        200:
+          description: OK
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TokenRO'
+        400:
+          description: Bad request
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+  /channels/{ChannelResourceKey}/applications:
+    get:
+      tags:
+      - Application
+      summary: Returns a list of applications of the channel.
+      description: The response resource collection contains objects of the type LinkRO.
+      operationId: getApplications
+      parameters:
+      - name: type
+        in: query
+        description: Application type that the applications belong to (optional).
+        schema:
+          type: string
+      - name: authentication-token
+        in: header
+        description: A token to authenticate the request
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserLogin
+        in: header
+        description: User name
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserPassword
+        in: header
+        description: User password
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserOrganization
+        in: header
+        description: User organization
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: ChannelResourceKey
+        in: path
+        description: The key or UUID to resolve a single item
+        required: true
+        schema:
+          type: string
+        example: ExampleKey
+      responses:
+        200:
+          description: OK
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollectionRO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResourceCollectionRO'
+        400:
+          description: Bad request
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+  /channels/{ChannelResourceKey}/applications/{ApplicationResourceKey}:
+    get:
+      tags:
+      - Application
+      summary: Returns details of an application.
+      description: The response contains an object of the type ApplicationRO.
+      operationId: getApplication
+      parameters:
+      - name: authentication-token
+        in: header
+        description: A token to authenticate the request
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserLogin
+        in: header
+        description: User name
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserPassword
+        in: header
+        description: User password
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserOrganization
+        in: header
+        description: User organization
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: ChannelResourceKey
+        in: path
+        description: The key or UUID to resolve a single item
+        required: true
+        schema:
+          type: string
+        example: ExampleKey
+      - name: ApplicationResourceKey
+        in: path
+        description: The key or UUID to resolve a single item
+        required: true
+        schema:
+          type: string
+        example: ExampleKey
+      responses:
+        200:
+          description: OK
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationRO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ApplicationRO'
+        400:
+          description: Bad request
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+  /users:
+    get:
+      tags:
+      - User
+      summary: Redirects to the currently logged in user details ('/users/-').
+      description: This call should not be used anymore (deprecated). Performs a redirect (303) to '/users/-'.
+      operationId: listUsers
+      parameters:
+      - name: authentication-token
+        in: header
+        description: A token to authenticate the request
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserLogin
+        in: header
+        description: User name
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserPassword
+        in: header
+        description: User password
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserOrganization
+        in: header
+        description: User organization
+        allowEmptyValue: true
+        schema:
+          type: string
+      responses:
+        303:
+          description: See other
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+      deprecated: true
+  /users/{UserResourceKey}:
+    get:
+      tags:
+      - User
+      summary: Returns details of the currently authenticated user.
+      description: The response contains an object of the type UserRO.
+      operationId: getUser
+      parameters:
+      - name: authentication-token
+        in: header
+        description: A token to authenticate the request
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserLogin
+        in: header
+        description: User name
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserPassword
+        in: header
+        description: User password
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserOrganization
+        in: header
+        description: User organization
+        allowEmptyValue: true
+        schema:
+          type: string
+      - name: UserResourceKey
+        in: path
+        description: The key or UUID to resolve a single item
+        required: true
+        schema:
+          type: string
+        example: ExampleKey
+      responses:
+        200:
+          description: OK
+          headers:
+            authentication-token:
+              schema:
+                type: string
+              example: A token to authenticate further requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/UserRO'
+components:
+  schemas:
+    AbstractResourceObject:
+      type: object
+      properties:
+        name:
+          type: string
+          description: the name of the returned element
+          xml:
+            attribute: true
+        type:
+          type: string
+          description: the type of the returned element
+          xml:
+            attribute: true
+      description: the list of elements
+    ResourceCollectionRO:
+      type: object
+      properties:
+        pageable:
+          type: string
+          description: the pageable ID
+        total:
+          type: integer
+          description: the pageable amount total
+          format: int32
+        offset:
+          type: integer
+          description: the pageable offset
+          format: int32
+        amount:
+          type: integer
+          description: the pageable amount
+          format: int32
+        elements:
+          type: array
+          description: the list of elements
+          xml:
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/AbstractResourceObject'
+        type:
+          type: string
+          description: the type
+          xml:
+            attribute: true
+        sortKeys:
+          uniqueItems: true
+          type: array
+          description: the keys to sort for
+          xml:
+            wrapped: true
+          items:
+            type: string
+            description: the keys to sort for
+            xml:
+              name: sortKey
+        name:
+          type: string
+          description: the name of the returned element
+          xml:
+            attribute: true
+      description: A list of ResourceObjects
+      xml:
+        name: ResourceCollection
+    AddressRO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: the name of the returned element
+          xml:
+            attribute: true
+        type:
+          type: string
+          description: The type of the returned element.
+          example: Address
+          xml:
+            attribute: true
+        state:
+          type: string
+          description: The main division of the country, e.g. a state or province.
+          example: AL
+        country:
+          type: string
+          description: The display name of the country in the current locale.
+          example: Germany
+        countryCode:
+          type: string
+        companyName:
+          type: string
+          description: The company name.
+          example: PMiller ltd.
+        companyName2:
+          type: string
+          description: The second company name.
+        id:
+          type: string
+          description: The ID of the returned element.
+          example: vagKAB17gg4AAAFGSkFqQASI
+        addressName:
+          type: string
+          description: The name of the address.
+          example: customeraddr-ABCDEFGPRMuMCscyXgSRVU
+        city:
+          type: string
+          description: The name of the city.
+          example: Potsdam
+        street:
+          type: string
+          description: The name of the street.
+        street2:
+          type: string
+          description: The second address line.
+          example: 1st Floor
+        street3:
+          type: string
+          description: The third address line.
+          example: Second door on the right
+        phoneHome:
+          type: string
+          description: The phone number of the house or apartment where the contact person lives.
+          example: "049364112677"
+        phoneMobile:
+          type: string
+          description: The number of the contact person's cell phone.
+          example: +49364112677
+        phoneBusiness:
+          type: string
+          description: The phone number of the contact person's company.
+          example: "049364112699"
+        firstName:
+          type: string
+          description: The (first) given name of the contact person.
+          example: Patricia
+        lastName:
+          type: string
+          description: The last name of the contact person.
+          example: Miller
+        title:
+          type: string
+          description: The (personal) title of the contact person, like <i>Mr.</i> or <i>Ms.</i>
+          example: Mrs.
+        postalCode:
+          type: string
+          description: The postal code.
+          example: "14482"
+        preferredBillingAddress:
+          type: boolean
+        preferredShippingAddress:
+          type: boolean
+      xml:
+        name: Address
+    CustomerRO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: the name of the returned element
+          xml:
+            attribute: true
+        type:
+          type: string
+          description: the type of the returned element
+          xml:
+            attribute: true
+        id:
+          type: string
+        company:
+          type: string
+        customerNo:
+          type: string
+        lastName:
+          type: string
+        firstName:
+          type: string
+        birthday:
+          type: string
+        email:
+          type: string
+        login:
+          type: string
+        phoneHome:
+          type: string
+        phoneMobile:
+          type: string
+        phoneBusiness:
+          type: string
+        customerSegments:
+          type: array
+          items:
+            type: string
+        preferredInvoiceToAddress:
+          $ref: '#/components/schemas/AddressRO'
+        preferredShipToAddress:
+          $ref: '#/components/schemas/AddressRO'
+        address:
+          $ref: '#/components/schemas/AddressRO'
+      xml:
+        name: Customer
+    LinkRO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: the name of the returned element
+          xml:
+            attribute: true
+        type:
+          type: string
+          description: the type of the returned element
+          xml:
+            attribute: true
+        attributes:
+          type: array
+          description: the list of attributes
+          xml:
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/ResourceAttribute'
+        uri:
+          type: string
+          description: the uri of the returned element
+        relation:
+          type: string
+          description: the relation of the returned element
+          enum:
+          - about
+          - alternate
+          - appendix
+          - archives
+          - author
+          - bookmark
+          - canonical
+          - chapter
+          - collection
+          - contents
+          - copyright
+          - create-form
+          - current
+          - describedby
+          - describes
+          - disclosure
+          - duplicate
+          - edit
+          - edit-form
+          - edit-media
+          - enclosure
+          - first
+          - glossary
+          - help
+          - hosts
+          - hub
+          - icon
+          - index
+          - item
+          - last
+          - latest-version
+          - license
+          - lrdd
+          - monitor
+          - monitor-group
+          - next
+          - next-archive
+          - nofollow
+          - noreferrer
+          - payment
+          - predecessor-version
+          - prefetch
+          - prev
+          - preview
+          - previous
+          - prev-archive
+          - privacy-policy
+          - profile
+          - related
+          - replies
+          - search
+          - section
+          - self
+          - service
+          - start
+          - stylesheet
+          - subsection
+          - successor-version
+          - tag
+          - terms-of-service
+          - type
+          - up
+          - version-history
+          - via
+          - working-copy
+          - working-copy-of
+        title:
+          type: string
+          description: the title of the returned element
+        description:
+          type: string
+          description: The description of the returned element
+        itemId:
+          type: string
+          description: the Id of the linked item
+        attribute:
+          $ref: '#/components/schemas/ResourceAttribute'
+      description: A Link pointing to a Resource Object
+      xml:
+        name: Link
+    PromotionCodeRO:
+      required:
+      - code
+      type: object
+      properties:
+        name:
+          type: string
+          description: the name of the returned element
+          xml:
+            attribute: true
+        type:
+          type: string
+          description: the type of the returned element
+          xml:
+            attribute: true
+        promotion:
+          $ref: '#/components/schemas/LinkRO'
+        code:
+          type: string
+          description: The promotion code string.
+          example: JSTTWVJNSIIUW
+        promotionID:
+          type: string
+        channelID:
+          type: string
+      description: Describes the applied promotion code.
+      xml:
+        name: PromotionCode
+    ResourceAttribute:
+      type: object
+      properties:
+        name:
+          type: string
+          description: the attribute's name
+          xml:
+            attribute: true
+        type:
+          type: string
+          description: the attribute's type
+          xml:
+            attribute: true
+        value:
+          type: object
+          description: the attribute's value
+      writeOnly: true
+      xml:
+        name: ResourceAttribute
+    TokenRO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: the name of the returned element
+          xml:
+            attribute: true
+        type:
+          type: string
+          description: the type of the returned element
+          xml:
+            attribute: true
+        user:
+          type: string
+        token:
+          type: string
+      xml:
+        name: Token
+    ResourceCollectionROLinkRO:
+      type: object
+      properties:
+        pageable:
+          type: string
+          description: the pageable ID
+        total:
+          type: integer
+          description: the pageable amount total
+          format: int32
+        offset:
+          type: integer
+          description: the pageable offset
+          format: int32
+        amount:
+          type: integer
+          description: the pageable amount
+          format: int32
+        elements:
+          type: array
+          description: the list of elements
+          xml:
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/LinkRO'
+        type:
+          type: string
+          description: the type
+          xml:
+            attribute: true
+        sortKeys:
+          uniqueItems: true
+          type: array
+          description: the keys to sort for
+          xml:
+            wrapped: true
+          items:
+            type: string
+            description: the keys to sort for
+            xml:
+              name: sortKey
+        name:
+          type: string
+          description: the name of the returned element
+          xml:
+            attribute: true
+      description: A list of ResourceObjects
+      xml:
+        name: ResourceCollection
+    ChannelRO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: the name of the returned element
+          xml:
+            attribute: true
+        type:
+          type: string
+          description: the type of the returned element
+          xml:
+            attribute: true
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/ResourceCollectionROLinkRO'
+      xml:
+        name: Channel
+    PromotionRO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: the name of the returned element
+          xml:
+            attribute: true
+        type:
+          type: string
+          description: The type of the object.
+          example: Promotion
+          xml:
+            attribute: true
+        id:
+          type: string
+          description: The promotion ID.
+        description:
+          type: string
+          description: The promotion description.
+          example: For LED TVs the shipping is free.
+        links:
+          $ref: '#/components/schemas/ResourceCollectionROLinkRO'
+      xml:
+        name: Promotion
+    ApplicationRO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: the name of the returned element
+          xml:
+            attribute: true
+        type:
+          type: string
+          description: the type of the returned element
+          xml:
+            attribute: true
+        displayName:
+          type: string
+        applicationType:
+          type: string
+        restAPI:
+          $ref: '#/components/schemas/LinkRO'
+        storeFrontAppUrl:
+          type: string
+        defaultLocale:
+          type: string
+          description: The application's default locale.
+        defaultCurrency:
+          type: string
+          description: The application's default currency.
+      xml:
+        name: Application
+    UserRO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: the name of the returned element
+          xml:
+            attribute: true
+        type:
+          type: string
+          description: the type of the returned element
+          xml:
+            attribute: true
+        firstName:
+          type: string
+          description: The given name (also known as a personal name, first name, forename) of the person represented by this user.
+          example: Peter
+        lastName:
+          type: string
+          description: The surname (also known as a family name, last name) of the person represented by this user.
+          example: Merkel
+      xml:
+        name: User
