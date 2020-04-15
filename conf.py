@@ -31,7 +31,6 @@ release = '1'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-'sphinxcontrib.openapi',
 'sphinx_search.extension'
 ]
 
