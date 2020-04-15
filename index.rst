@@ -10,10 +10,6 @@ Intershop REST API Documentation
    :maxdepth: 2
    :caption: Contents:
 
-   auth
-   rma
-   orderstate
-   cache
-   cms
+
    text
    text2
